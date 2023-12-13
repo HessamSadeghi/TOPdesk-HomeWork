@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0"/>
+	<title>Hello From Your Country!</title>
+		<!-- <link href="/style.bundle.js" rel="stylesheet" /> -->
+	<link href="../public/css/style.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="dropDown">
+	<label for="countryInput">Hello From</label>
+	<input id="countryInput" type="text" class="textBox" placeholder="Your Country" readonly/>
+	<div class="option"></div>
+</div>
+<div class="square"></div>
+<div class="card detail">
+	<div class="flagBox">
+		<img alt="Flag" class="flag" src=""/>
+	</div>
+	<div class="content">
+		<div class="contentDetails">
+			<h2>
+				<span class="title">Continent:</span>
+				<span class="continent"></span>
+			</h2>
+			<h2>
+				<span class="title">Country:</span>
+				<span class="name"></span>
+			</h2>
+			<h2>
+				<span class="title">Capital:</span>
+				<span class="capital"></span>
+			</h2>
+			<br />
+			<h2>
+				<span class="title">Area:</span>
+				<span>
+					<span class="area"></span>
+					<span class="unit">
+            <span>km</span>
+            <sup>2</sup>
+          </span>
+				</span>
+			</h2>
+			<h2>
+				<span class="title">Population:</span>
+				<span>
+					<span class="population"></span>
+					<span class="unit">
+            <span>ppl</span>
+          </span>
+				</span>
+			</h2>
+			<br />
+			<div class="salutation">
+				<span class="title">Salutation:</span>
+				<span class="hello"></span>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <script src="/app.bundle.js"></script> -->
+<script src="../public/js/app.js"></script>
+</body>
+</html>
