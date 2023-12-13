@@ -3,9 +3,8 @@
 mkdir TOPdesk-HomeWork
 cd TOPdesk-HomeWork
 npm init -y
-npm install express webpack webpack-cli node-fetch
-npm install html-webpack-plugin --save-dev
-npm install style-loader css-loader --save-dev
+npm install express node-fetch webpack webpack-cli
+npm install -D clean-webpack-plugin css-loader html-webpack-plugin mini-css-extract-plugin style-loader
 
 npx webpack --config webpack.config.js
 node server/server.js
