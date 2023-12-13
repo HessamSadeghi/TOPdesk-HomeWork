@@ -1,11 +1,11 @@
 {
-  "name": "hessam-homework",
+  "name": "top_desk_homework",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is the TOPdesk HomeWork",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "bundle": "npx webpack --config webpack.config.js"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +19,7 @@
   "devDependencies": {
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.5.4",
+    "mini-css-extract-plugin": "^2.7.6",
     "style-loader": "^3.3.3"
   }
 }
