@@ -4,11 +4,18 @@ const apis = {
 };
 
 let countries = [];
-const countryEntries = document.querySelector('.option');
+let salut = '';
 const dropDown = document.querySelector('.dropDown');
+const countryEntries = document.querySelector('.option');
+const speakButton = document.getElementById('speakButton');
 
 dropDown.addEventListener('click', () => {
 	dropDown.classList.toggle('active');
+});
+
+speakButton.addEventListener('click', () => {
+	const whatToSay = salut.includes('&') || salut.includes('-') ? 'Blah Blah' : salut;
+	textToSpeech(whatToSay);
 });
 
 const loadCountries = async () => {
@@ -39,16 +46,17 @@ const getCountrySalutation = async (text) => {
 	try {
 		const res = await fetch(apis.hello + selectedCountry.cca2);
 		const data = await res.json();
-		displayCountryDetails(selectedCountry, data);
+		salut = data.hello ? data.hello : '-';
+		displayCountryDetails(selectedCountry);
 	} catch (error) {
 		console.error('Error loading hello:', error);
 	}
 };
 
-const displayCountryDetails = (selectedCountry, data) => {
+const displayCountryDetails = (selectedCountry) => {
 	document.querySelector('.detail').style.visibility = 'visible';
 	document.querySelector('.square').classList.remove('active');
-	document.querySelector('.hello').innerHTML = data.hello ? data.hello : '-';
+	document.querySelector('.hello').innerHTML = salut;
 	document.querySelector('.continent').innerHTML = selectedCountry.continents[0];
 	document.querySelector('.name').innerHTML = selectedCountry.name.common;
 	document.querySelector('.capital').innerHTML = selectedCountry.capital[0];
@@ -61,6 +69,12 @@ const setDropDownInput = (text) => {
 	document.querySelector('.textBox').value = text;
 	document.querySelector('.square').classList.add('active');
 	getCountrySalutation(text);
+};
+
+const textToSpeech = (text) => {
+	const speech = new SpeechSynthesisUtterance();
+	speech.text = text;
+	speechSynthesis.speak(speech);
 };
 
 window.addEventListener('load', loadCountries);

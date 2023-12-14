@@ -9,12 +9,20 @@
 
 body {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 5em;
     min-height: 100vh;
     background: #ddebfc;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    margin: 1em;
 }
 
 .dropDown {
@@ -29,7 +37,7 @@ body {
     position: absolute;
     right: -1em;
     top: -.8em;
-    z-index: 100;
+    z-index: 50;
     width: 8px;
     height: 8px;
     border: 2px solid #203E63;
@@ -89,6 +97,7 @@ body {
 
 .dropDown.active .option {
     display: block;
+    z-index: 100;
 }
 
 .dropDown .option div {
@@ -121,10 +130,6 @@ body {
     background: #eee;
 }
 
-.detail {
-    visibility: hidden;
-}
-
 .card {
     position: relative;
     margin-top: 5em;
@@ -147,6 +152,7 @@ body {
 
 .flagBox {
     position: absolute;
+    z-index: 50;
     left: 50%;
     top: -50px;
     transform: translateX(-50%);
@@ -231,7 +237,7 @@ body {
     right: 48%;
     height: 2em;
     width: 2em;
-    background: white;
+    background: #203E63;
     margin: auto;
     border-radius: 5px;
     transform-style: preserve-3d;
@@ -241,6 +247,14 @@ body {
 
 .square.active {
     display: block;
+}
+
+.block {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: .3em;
 }
 
 @keyframes spin {

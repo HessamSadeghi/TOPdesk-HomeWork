@@ -10,54 +10,61 @@
 	<link href="../public/css/style.css" rel="stylesheet"/>
 </head>
 <body>
-<div class="dropDown">
-	<label for="countryInput">Hello From</label>
-	<input id="countryInput" type="text" class="textBox" placeholder="Your Country" readonly/>
-	<div class="option"></div>
+<div class="container">
+	<div class="dropDown">
+		<label for="countryInput">Hello From</label>
+		<input id="countryInput" type="text" class="textBox" placeholder="Your Country" readonly/>
+		<div class="option"></div>
+	</div>
 </div>
 <div class="square"></div>
-<div class="card detail">
-	<div class="flagBox">
-		<img alt="Flag" class="flag" src=""/>
-	</div>
-	<div class="content">
-		<div class="contentDetails">
-			<h2>
-				<span class="title">Continent:</span>
-				<span class="continent"></span>
-			</h2>
-			<h2>
-				<span class="title">Country:</span>
-				<span class="name"></span>
-			</h2>
-			<h2>
-				<span class="title">Capital:</span>
-				<span class="capital"></span>
-			</h2>
-			<br/>
-			<h2>
-				<span class="title">Area:</span>
-				<span>
-					<span class="area"></span>
-					<span class="unit">
-            <span>km</span>
-            <sup>2</sup>
-          </span>
-				</span>
-			</h2>
-			<h2>
-				<span class="title">Population:</span>
-				<span>
+<div class="container">
+	<div class="card detail" style="visibility: hidden">
+		<div class="flagBox">
+			<img alt="Flag" class="flag" src=""/>
+		</div>
+		<div class="content">
+			<div class="contentDetails">
+				<h2>
+					<span class="title">Continent:</span>
+					<span class="continent"></span>
+				</h2>
+				<h2>
+					<span class="title">Country:</span>
+					<span class="name"></span>
+				</h2>
+				<h2>
+					<span class="title">Capital:</span>
+					<span class="capital"></span>
+				</h2>
+				<br/>
+				<h2>
+					<span class="title">Area:</span>
+					<span>
+						<span class="area"></span>
+						<span class="unit">
+	            <span>km</span>
+	            <sup>2</sup>
+	          </span>
+					</span>
+				</h2>
+				<h2>
+					<span class="title">Population:</span>
+					<span>
 					<span class="population"></span>
 					<span class="unit">
             <span>ppl</span>
           </span>
 				</span>
-			</h2>
-			<br/>
-			<div class="salutation">
-				<span class="title">Salutation:</span>
-				<span class="hello"></span>
+				</h2>
+				<br/>
+				<div class="salutation">
+					<span class="title">Salutation:</span>
+					<span class="block">
+						<span class="hello"></span>
+						<button id="speakButton">🔊</button>
+					</span>
+				</div>
 			</div>
 		</div>
 	</div>
