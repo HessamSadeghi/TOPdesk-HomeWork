@@ -249,12 +249,22 @@ body {
     display: block;
 }
 
-.block {
+.salutation_block {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: .3em;
+}
+
+.speaker {
+    transform: scale(80%);
+}
+
+.speaker:hover {
+    cursor: pointer;
+    transform: scale(110%);
+    transition: .5s;
 }
 
 @keyframes spin {

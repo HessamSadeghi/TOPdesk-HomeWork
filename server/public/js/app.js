@@ -1,20 +1,24 @@
+if (typeof process !== 'undefined' && process.release.name === 'node') {
+	require('../css/style.css');
+}
+
 const apis = {
 	countries: 'https://restcountries.com/v3.1/all',
 	hello: 'https://hellosalut.stefanbohacek.dev/?cc=',
 };
 
 let countries = [];
-let salut = '';
+let salutationWord = '';
 const dropDown = document.querySelector('.dropDown');
+const speakButton = document.querySelector('.speaker');
 const countryEntries = document.querySelector('.option');
-const speakButton = document.getElementById('speakButton');
 
 dropDown.addEventListener('click', () => {
 	dropDown.classList.toggle('active');
 });
 
 speakButton.addEventListener('click', () => {
-	const whatToSay = salut.includes('&') || salut.includes('-') ? 'Blah Blah' : salut;
+	const whatToSay = salutationWord.includes('&') || salutationWord.includes('-') ? 'Blah Blah' : salutationWord;
 	textToSpeech(whatToSay);
 });
 
@@ -33,9 +37,7 @@ const populateCountryDropdown = () => {
 	countryEntries.innerHTML = '';
 	countries.forEach(country => {
 		const countryEntry = document.createElement('div');
-		countryEntry.textContent = country.name.common.length > 18
-			? `${country.name.common.slice(0, 18)} ...`
-			: country.name.common;
+		countryEntry.textContent = shorterText(country.name.common);
 		countryEntry.addEventListener('click', () => setDropDownInput(country.name.common));
 		countryEntries.appendChild(countryEntry);
 	});
@@ -46,7 +48,7 @@ const getCountrySalutation = async (text) => {
 	try {
 		const res = await fetch(apis.hello + selectedCountry.cca2);
 		const data = await res.json();
-		salut = data.hello ? data.hello : '-';
+		salutationWord = data.hello ? data.hello : '-';
 		displayCountryDetails(selectedCountry);
 	} catch (error) {
 		console.error('Error loading hello:', error);
@@ -54,27 +56,32 @@ const getCountrySalutation = async (text) => {
 };
 
 const displayCountryDetails = (selectedCountry) => {
-	document.querySelector('.detail').style.visibility = 'visible';
-	document.querySelector('.square').classList.remove('active');
-	document.querySelector('.hello').innerHTML = salut;
-	document.querySelector('.continent').innerHTML = selectedCountry.continents[0];
-	document.querySelector('.name').innerHTML = selectedCountry.name.common;
+	document.querySelector('.hello').innerHTML = salutationWord;
+	document.querySelector('.flag').src = selectedCountry.flags.png;
 	document.querySelector('.capital').innerHTML = selectedCountry.capital[0];
+	document.querySelector('.continent').innerHTML = selectedCountry.continents[0];
 	document.querySelector('.area').innerHTML = selectedCountry.area.toLocaleString();
 	document.querySelector('.population').innerHTML = selectedCountry.population.toLocaleString();
-	document.querySelector('.flag').src = selectedCountry.flags.png;
+	document.querySelector('.name').innerHTML = shorterText(selectedCountry.name.common);
+	
+	document.querySelector('.detail').style.visibility = 'visible';
+	document.querySelector('.square').classList.remove('active');
 };
 
 const setDropDownInput = (text) => {
-	document.querySelector('.textBox').value = text;
+	document.querySelector('.textBox').value = shorterText(text);
 	document.querySelector('.square').classList.add('active');
-	getCountrySalutation(text);
+	getCountrySalutation(text).catch();
 };
 
 const textToSpeech = (text) => {
 	const speech = new SpeechSynthesisUtterance();
 	speech.text = text;
 	speechSynthesis.speak(speech);
+};
+
+const shorterText = (text) => {
+	return text.length > 18 ? `${text.slice(0, 18)} ...` : text;
 };
 
 window.addEventListener('load', loadCountries);
