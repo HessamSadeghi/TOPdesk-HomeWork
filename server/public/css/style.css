@@ -110,6 +110,25 @@ body {
     color: #203E63;
 }
 
+.dropDown .joke {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    text-align: justify;
+    font-size: .8em;
+    top: 2.5em;
+    left: 3.25em;
+    width: 100%;
+    height: auto;
+    padding: 1.5em;
+    background: white;
+    white-space: break-spaces;
+    box-shadow: 0 30px 30px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
 ::-webkit-scrollbar {
     width: 1em;
 }
