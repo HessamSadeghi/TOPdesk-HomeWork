@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25d060e9-0a86-4c1d-84d2-27a9a9b91cd3" name="Changes" comment="feat(main) adding joke">
+    <list default="true" id="25d060e9-0a86-4c1d-84d2-27a9a9b91cd3" name="Changes" comment="feat(main) updating README.md">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +118,8 @@
       <workItem from="1702474617109" duration="100000" />
       <workItem from="1702475403045" duration="928000" />
       <workItem from="1702534974011" duration="15923000" />
-      <workItem from="1702629670609" duration="12509000" />
+      <workItem from="1702629670609" duration="13044000" />
+      <workItem from="1702647312246" duration="105000" />
     </task>
     <task id="LOCAL-00001" summary="feat(main) first draft">
       <option name="closed" value="true" />
@@ -176,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702644332982</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feat(main) updating README.md">
+      <option name="closed" value="true" />
+      <created>1702645104751</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1702645104752</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,6 +209,7 @@
     <MESSAGE value="feat(main) webpack config" />
     <MESSAGE value="feat(main) css minimizer" />
     <MESSAGE value="feat(main) adding joke" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(main) adding joke" />
+    <MESSAGE value="feat(main) updating README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(main) updating README.md" />
   </component>
 </project>
