@@ -1,14 +1,7 @@
 # TOPdesk-HomeWork
 
-mkdir TOPdesk-HomeWork
-cd TOPdesk-HomeWork
-npm init -y
-npm install express webpack
-npm install -D css-loader css-minimizer-webpack-plugin html-webpack-plugin mini-css-extract-plugin webpack-cli
-
-npx webpack --config webpack.config.js
-node server/server.js
-
-npm install -g serve
-cd dist
-serve
+1. npm run start (run using express.js) 
+2. npm run bundle (bundle using webpack)
+3. npm install -g serve
+4. cd dist
+5. serve
