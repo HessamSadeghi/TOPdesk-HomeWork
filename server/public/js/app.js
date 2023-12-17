@@ -2,15 +2,19 @@
 let countries = [];
 let salutationWord = '';
 const apis = {
-	countries: 'https://restcountries.com/v3.1/all',
+	country: 'https://restcountries.com/v3.1/all',
 	hello: 'https://hellosalut.stefanbohacek.dev/?cc=',
 	joke: 'https://api.chucknorris.io/jokes/search?query=',
 };
+const square = document.querySelector('.square');
+const textBox = document.querySelector('.textBox');
+const squareContainer = document.querySelector('.square-container');
+
 
 // Function to load the Countries
 const loadCountries = async () => {
 	try {
-		const res = await fetch(apis.countries);
+		const res = await fetch(apis.country);
 		const data = await res.json();
 		countries = data.sort((a, b) => a.name.common.localeCompare(b.name.common));
 		populateCountryDropdown();
@@ -19,22 +23,31 @@ const loadCountries = async () => {
 	}
 };
 
-// Function to get country salutation and joke
-const getCountrySalutationAndJoke = async (text) => {
+// Function to get country salutation
+const getCountrySalutation = async (text) => {
 	const selectedCountry = countries.find(country => country.name.common === text);
 	try {
 		const helloResponse = await fetch(apis.hello + selectedCountry.cca2);
 		const helloData = await helloResponse.json();
 		salutationWord = helloData.hello ? helloData.hello : '-';
 		
-		const jokeResponse = await fetch(apis.joke + ` ${selectedCountry.name.common}`);
+		displayCountryDetails(selectedCountry);
+	} catch (error) {
+		console.error('Error loading country details:', error);
+	}
+};
+
+// Function to get joke
+const getJoke = async (text) => {
+	try {
+		const jokeResponse = await fetch(apis.joke + ` ${text}`);
 		const jokeData = await jokeResponse.json();
 		const randomIndex = Math.floor(Math.random() * jokeData.result.length);
 		const joke = jokeData.result.length ? jokeData.result[randomIndex].value : '';
 		
-		displayCountryDetails(selectedCountry, joke);
+		displayJoke(joke);
 	} catch (error) {
-		console.error('Error loading country details:', error);
+		console.error('Error loading joke:', error);
 	}
 };
 
@@ -63,16 +76,16 @@ const createCountryEntry = (countryName) => {
 
 // Function to set dropdown input
 const setDropDownInput = (text) => {
-	const textBox = document.querySelector('.textBox');
-	const square = document.querySelector('.square');
-	textBox.value = shorterText(text, 18);
 	square.classList.add('active');
-	getCountrySalutationAndJoke(text).catch(error => console.error('Error getting country salutation:', error));
+	textBox.value = shorterText(text, 18);
+	squareContainer.style.visibility = 'visible';
+	
+	getCountrySalutation(text).catch(error => console.error('Error getting country salutation:', error));
+	getJoke(text).catch(error => console.error('Error getting joke:', error));
 };
 
 // Function to display country details
-const displayCountryDetails = (selectedCountry, joke) => {
-	setJoke(joke);
+const displayCountryDetails = (selectedCountry) => {
 	document.querySelector('.hello').innerHTML = salutationWord;
 	document.querySelector('.flag').src = selectedCountry.flags.png;
 	document.querySelector('.capital').innerHTML = selectedCountry.capital[0];
@@ -82,13 +95,13 @@ const displayCountryDetails = (selectedCountry, joke) => {
 	document.querySelector('.name').innerHTML = shorterText(selectedCountry.name.common, 18);
 	
 	const detailElement = document.querySelector('.detail');
-	const squareElement = document.querySelector('.square');
 	detailElement.style.visibility = 'visible';
-	squareElement.classList.remove('active');
+	squareContainer.style.visibility = 'hidden';
+	square.classList.remove('active');
 };
 
-// Function to set joke visibility and content
-const setJoke = (joke) => {
+// Function to display joke
+const displayJoke = (joke) => {
 	const jokeElement = document.querySelector('.joke');
 	if (joke) {
 		jokeElement.innerHTML = shorterText(joke, 230);
